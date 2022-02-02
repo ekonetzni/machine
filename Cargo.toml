@@ -2,13 +2,10 @@
 name = "machine-rusty"
 version = "0.1.0"
 edition = "2021"
-working_dir = "/Users/ekonetzni"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-log = "^0.4.14"
-simplelog = "^0.11.2"
 daemonize = "^0.4.1"
 confy = "0.4.0"
 serde = { version = "1.0", features = ["derive"] }
