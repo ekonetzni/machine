@@ -31,6 +31,8 @@ fn main() {
       println!("Starting machine.");
       loop {
         let now = time::Instant::now();
+        let exe = machine::Machine::new();
+        exe.download().read();
         sleep(time::Duration::from_millis(5000));
         println!("Loop took {} seconds.", now.elapsed().as_secs());
       }

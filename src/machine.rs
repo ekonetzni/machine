@@ -1,30 +1,19 @@
-extern crate daemonize;
-
-trait Workflow {
-  fn execute(&self) -> &str;
-}
-
-struct DownloadVideo;
-impl Workflow for DownloadVideo {
-  fn execute(&self) -> &str {
-    println!("Downloading video...");
-    return "Downloading video";
-  }
-}
-
-struct Machine {
-  workflows: Vec<Box<dyn Workflow>>,
+pub struct Machine {
+  pub generation: String,
 }
 impl Machine {
-  fn new() -> Self {
-    Self { workflows: vec![] }
+  pub fn new() -> Self {
+    Self {
+      generation: "gen 1".into(),
+    }
+  }
+  pub fn download(mut self) -> Self {
+    println!("downloading");
+    return self;
   }
 
-  fn add_workflow(&mut self, workflow: Box<dyn Workflow>) {
-    self.workflows.push(workflow);
-  }
-
-  fn exe(&self) -> Vec<&str> {
-    return self.workflows.iter().map(|wf| wf.execute()).collect();
+  pub fn read(mut self) -> Self {
+    println!("reading");
+    return self;
   }
 }

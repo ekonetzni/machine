@@ -5,8 +5,6 @@ pub struct MachineConfig {
   pub version: u8,
   pub api_key: String,
   pub working_dir: String,
-  pub user: String,
-  pub group: String,
 }
 
 impl ::std::default::Default for MachineConfig {
@@ -14,9 +12,7 @@ impl ::std::default::Default for MachineConfig {
     Self {
       version: 0,
       api_key: "".into(),
-      working_dir: ".".into(),
-      user: "".into(),
-      group: "".into(),
+      working_dir: "./tmp".into(),
     }
   }
 }
