@@ -5,6 +5,7 @@ extern crate simplelog;
 use daemonize::Daemonize;
 use log::info;
 use std::fs::File;
+use std::path::Path;
 
 mod config;
 mod machine;
@@ -23,12 +24,13 @@ fn main() {
   .unwrap();
   let stdout = File::create("/tmp/daemon.out").unwrap();
   let stderr = File::create("/tmp/daemon.err").unwrap();
+  let working_dir = Path::new(&cfg.working_dir);
 
   let daemonize = Daemonize::new()
-    .pid_file("/tmp/test.pid") // Every method except `new` and `start`
+    .pid_file(working_dir.join("machine.pid")) // Every method except `new` and `start`
     .chown_pid_file(true) // is optional, see `Daemonize` documentation
-    .working_directory("/tmp") // for default behaviour.
-    .user("nobody")
+    .working_directory(working_dir) // for default behaviour.
+    .user("ekonetzni")
     .group("daemon") // Group name
     .group(2) // or group id.
     .umask(0o777) // Set umask, `0o027` by default.

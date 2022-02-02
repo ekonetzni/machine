@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 pub struct MachineConfig {
   pub version: u8,
   pub api_key: String,
-  pub daemon: bool,
+  pub working_dir: String,
 }
 
 impl ::std::default::Default for MachineConfig {
@@ -12,7 +12,7 @@ impl ::std::default::Default for MachineConfig {
     Self {
       version: 0,
       api_key: "".into(),
-      daemon: true,
+      working_dir: ".".into(),
     }
   }
 }
